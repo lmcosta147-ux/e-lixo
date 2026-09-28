@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recompensas Ecológicas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🎁 Trocar Pontos por Recompensas</h1>
+      <p>Use seus pontos acumulados para resgatar cupons e prêmios sustentáveis.</p>
+    </header>
+
+    <!-- Menu de Navegação -->
+    <nav class="nav-bar">
+      <a href="home.html" class="nav-btn">♻️ Início / Descarte</a>
+      <a href="recompensas.html" class="nav-btn active">🎁 Recompensas</a>
+    </nav>
+
+    <!-- Card de Saldo -->
+    <section class="card saldo-card">
+      <h2>Seu Saldo Disponível</h2>
+      <div class="saldo-valor">
+        <span id="saldoTotal">0</span> <small>pontos</small>
+      </div>
+    </section>
+
+    <!-- Mensagens de Alerta -->
+    <div id="mensagem" class="mensagem"></div>
+
+    <!-- Lista de Recompensas -->
+    <section class="card">
+      <h2>Catálogo de Prêmios</h2>
+      <div id="gridRecompensas" class="grid-recompensas">
+        <p class="vazio">Carregando recompensas...</p>
+      </div>
+    </section>
+
+    <!-- Histórico de Resgates -->
+    <section class="card">
+      <h2>Seus Cupons Resgatados</h2>
+      <ul id="listaResgates" class="lista-historico">
+        <li class="vazio">Nenhum cupom resgatado ainda.</li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="recompensas.js"></script>
+</body>
+</html>

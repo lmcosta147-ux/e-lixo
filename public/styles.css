@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f7f6;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #2e7d32;
+  font-size: 1.8rem;
+}
+
+header p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.saldo-card {
+  background: linear-gradient(135deg, #2e7d32, #4caf50);
+  color: #ffffff;
+  text-align: center;
+}
+
+.saldo-card h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.saldo-valor {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.saldo-valor small {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #2e7d32;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #2e7d32;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #1b5e20;
+}
+
+.mensagem {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.lista-historico {
+  list-style: none;
+}
+
+.historico-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.historico-item:last-child {
+  border-bottom: none;
+}
+
+.item-info strong {
+  display: block;
+  color: #333;
+}
+
+.item-info small {
+  color: #888;
+}
+
+.item-pontos {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.vazio {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Barra de Navegação */
+.nav-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-btn {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background-color: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.nav-btn.active, .nav-btn:hover {
+  background-color: #2e7d32;
+  color: white;
+}
+
+/* Cards de Recompensas */
+.grid-recompensas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recompensa-card {
+  display: flex;
+  gap: 15px;
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.recompensa-icone {
+  font-size: 2.5rem;
+}
+
+.recompensa-detalhes {
+  flex: 1;
+}
+
+.recompensa-detalhes h3 {
+  font-size: 1rem;
+  color: #2e7d32;
+}
+
+.recompensa-detalhes p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 5px 0 10px 0;
+}
+
+.recompensa-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custo-pontos {
+  font-weight: bold;
+  color: #1b5e20;
+  font-size: 0.9rem;
+}
+
+.btn-resgatar {
+  width: auto;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+code {
+  background: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}

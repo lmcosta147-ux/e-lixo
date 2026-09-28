@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descarte Ecológico - Pontuação</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🌱 Descarte Ecológico</h1>
+      <p>Registre seus descartes e acumule pontos!</p>
+    </header>
+
+    <!-- Barra de Navegação -->
+    <nav class="nav-bar">
+      <a href="home.html" class="nav-btn active">♻️ Início / Descarte</a>
+      <a href="recompensas.html" class="nav-btn">🎁 Recompensas</a>
+    </nav>
+
+    <!-- Card de Saldo de Pontos -->
+    <section class="card saldo-card">
+      <h2>Seu Saldo Atual</h2>
+      <div class="saldo-valor">
+        <span id="saldoTotal">0</span> <small>pontos</small>
+      </div>
+    </section>
+
+    <!-- Formulário de Descarte -->
+    <section class="card">
+      <h2>Registrar Novo Descarte</h2>
+      <form id="formDescarte">
+        <div class="form-group">
+          <label for="tipoLixo">Tipo de Resíduo:</label>
+          <select id="tipoLixo" required>
+            <option value="">Selecione o tipo...</option>
+            <option value="Pilhas e Baterias">Pilhas e Baterias</option>
+            <option value="Celulares e Tablets">Celulares e Tablets</option>
+            <option value="Computadores e Periféricos">Computadores e Periféricos</option>
+            <option value="Eletrodomésticos Pequenos">Eletrodomésticos Pequenos</option>
+            <option value="Plástico / Embalagens">Plástico / Embalagens</option>
+            <option value="Papel e Papelão">Papel e Papelão</option>
+            <option value="Vidro">Vidro</option>
+            <option value="Metal / Latas">Metal / Latas</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="peso">Peso (em kg):</label>
+          <input type="number" id="peso" step="0.1" min="0.1" placeholder="Ex: 1.5" required>
+        </div>
+
+        <div class="form-group">
+          <label for="pontoColeta">Ponto de Coleta Utilizado:</label>
+          <select id="pontoColeta" required>
+            <option value="">Selecione o local de entrega...</option>
+            <option value="EcoStation Centro">EcoStation Centro</option>
+            <option value="Ecoponto Supermercado Silva">Ecoponto Supermercado Silva</option>
+            <option value="Coleta Seletiva Municipal">Coleta Seletiva Municipal</option>
+            <option value="Posto Bairro Sustentável">Posto Bairro Sustentável</option>
+            <option value="Ponto Parque Central">Ponto Parque Central</option>
+          </select>
+        </div>
+
+        <button type="submit" id="btnEnviar">Registrar Descarte</button>
+      </form>
+
+      <div id="mensagem" class="mensagem"></div>
+    </section>
+
+    <!-- Histórico de Descartes -->
+    <section class="card">
+      <h2>Histórico de Descartes</h2>
+      <ul id="listaHistorico" class="lista-historico">
+        <li class="vazio">Nenhum descarte registrado ainda.</li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
