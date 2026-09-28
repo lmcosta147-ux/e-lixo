@@ -126,6 +126,21 @@ def registrar_descarte():
 def listar_recompensas():
     return jsonify(recompensas_db)
 
+# --- ROTA PARA REINICIAR/RESETAR O HISTÓRICO E SALDO ---
+@app.route('/api/reset', methods=['POST'])
+def resetar_dados():
+    global usuario_db
+    
+    # Reseta o saldo e limpa os históricos
+    usuario_db["saldoTotal"] = 0
+    usuario_db["historico"] = []
+    usuario_db["resgates"] = []
+    
+    return jsonify({
+        "mensagem": "Histórico e saldo reiniciados com sucesso!",
+        "usuario": usuario_db
+    })
+
 @app.route('/api/resgatar', methods=['POST'])
 def resgatar_recompensa():
     dados = request.get_json()

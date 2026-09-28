@@ -100,6 +100,34 @@ if (formDescarte) {
       }
     }
   });
+  async function reiniciarHistorico() {
+    // Confirmação para evitar cliques acidentais
+    const confirmacao = confirm("Tem certeza de que deseja apagar todo o histórico de descartes e zerar seus pontos?");
+    
+    if (!confirmacao) return;
+
+    try {
+        const resposta = await fetch('/api/reset', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const dados = await resposta.json();
+
+        if (resposta.ok) {
+            alert(dados.mensagem);
+            // Recarrega a página para atualizar o saldo e o histórico na tela
+            window.location.reload();
+        } else {
+            alert("Erro ao reiniciar histórico: " + (dados.erro || "Tente novamente."));
+        }
+    } catch (erro) {
+        console.error("Erro na requisição:", erro);
+        alert("Ocorreu um erro ao tentar conectar com o servidor.");
+    }
+}
 }
 
 // Inicializa a chamada ao carregar a página
