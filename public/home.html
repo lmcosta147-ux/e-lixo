@@ -78,12 +78,38 @@
       </ul>
     </section>
   </div>
-  
+
 <div class="area-reset" style="margin-top: 20px; text-align: center;">
     <button id="btnReset" onclick="reiniciarHistorico()" style="background-color: #e74c3c; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold;">
         🗑️ Limpar Histórico e Resetar Pontos
     </button>
 </div>
+<!-- Final do seu HTML -->
+
+    <script>
+        // ... (outras funções existentes como registrarDescarte, etc.) ...
+
+        // COLE A FUNÇÃO DE RESET AQUI:
+        async function reiniciarHistorico() {
+            const confirmacao = confirm("Tem certeza de que deseja apagar todo o histórico de descartes e zerar seus pontos?");
+            if (!confirmacao) return;
+
+            try {
+                const resposta = await fetch('/api/reset', { method: 'POST' });
+                const dados = await resposta.json();
+
+                if (resposta.ok) {
+                    alert(dados.mensagem);
+                    window.location.reload();
+                } else {
+                    alert("Erro ao reiniciar histórico: " + (dados.erro || "Tente novamente."));
+                }
+            } catch (erro) {
+                console.error("Erro na requisição:", erro);
+                alert("Ocorreu um erro ao tentar conectar com o servidor.");
+            }
+        }
+    </script>
 
   <script src="app.js"></script>
 </body>
