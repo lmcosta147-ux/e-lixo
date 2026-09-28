@@ -1,8 +1,13 @@
-from flask import Flask, request, jsonify
+import os
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from datetime import datetime
 
-app = Flask(__name__, static_folder='public')
+# Configuração dinâmica do caminho da pasta 'public' para o Render
+base_dir = os.path.dirname(os.path.abspath(__file__))
+public_dir = os.path.join(base_dir, 'public')
+
+app = Flask(__name__, static_folder=public_dir)
 CORS(app)
 
 # Banco de dados simulado em memória
@@ -60,6 +65,20 @@ recompensas_db = [
 ]
 
 PONTOS_POR_KG = 100
+
+# ==========================================
+# ROTAS DO FRONTEND (SERVIR FICHEIROS ESTÁTICOS)
+# ==========================================
+
+@app.route('/')
+def index():
+    return send_from_directory(public_dir, 'home.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    if os.path.exists(os.path.join(public_dir, path)):
+        return send_from_directory(public_dir, path)
+    return send_from_directory(public_dir, 'home.html')
 
 # ==========================================
 # ROTAS DA API
@@ -138,11 +157,6 @@ def resgatar_recompensa():
         "resgate": resgate
     })
 
-import os
-
-# (Mantenha todas as suas rotas e códigos anteriores do app.py aqui em cima)
-
 if __name__ == '__main__':
-    # O Render define a variável PORT no ambiente de produção
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
