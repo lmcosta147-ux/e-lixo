@@ -100,25 +100,19 @@ if (formDescarte) {
       }
     }
   });
-  async function reiniciarHistorico() {
-    // Confirmação para evitar cliques acidentais
+ // ... (código existente do seu arquivo script.js) ...
+
+// Cole no final do arquivo:
+async function reiniciarHistorico() {
     const confirmacao = confirm("Tem certeza de que deseja apagar todo o histórico de descartes e zerar seus pontos?");
-    
     if (!confirmacao) return;
 
     try {
-        const resposta = await fetch('/api/reset', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
+        const resposta = await fetch('/api/reset', { method: 'POST' });
         const dados = await resposta.json();
 
         if (resposta.ok) {
             alert(dados.mensagem);
-            // Recarrega a página para atualizar o saldo e o histórico na tela
             window.location.reload();
         } else {
             alert("Erro ao reiniciar histórico: " + (dados.erro || "Tente novamente."));
