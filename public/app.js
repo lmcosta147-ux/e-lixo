@@ -1,5 +1,5 @@
-// URL apontando explicitamente para o IP do Flask
-const API_URL = 'http://127.0.0.1:5000/api';
+// URL relativa que funciona em qualquer lugar (Computador, Telemóvel e Render)
+const API_URL = '/api';
 
 // Seleção de elementos do DOM
 const formDescarte = document.getElementById('formDescarte');
@@ -46,7 +46,7 @@ async function carregarDadosUsuario() {
     const resposta = await fetch(`${API_URL}/usuario`);
     if (resposta.ok) {
       const usuario = await resposta.json();
-      console.log('✅ Conectado ao Flask! Dados recebidos:', usuario);
+      console.log('✅ Conectado ao Render! Dados recebidos:', usuario);
       atualizarInterface(usuario);
     }
   } catch (erro) {
@@ -100,28 +100,31 @@ if (formDescarte) {
       }
     }
   });
- // ... (código existente do seu arquivo script.js) ...
-
-// Cole no final do arquivo:
-async function reiniciarHistorico() {
-    const confirmacao = confirm("Tem certeza de que deseja apagar todo o histórico de descartes e zerar seus pontos?");
-    if (!confirmacao) return;
-
-    try {
-        const resposta = await fetch('/api/reset', { method: 'POST' });
-        const dados = await resposta.json();
-
-        if (resposta.ok) {
-            alert(dados.mensagem);
-            window.location.reload();
-        } else {
-            alert("Erro ao reiniciar histórico: " + (dados.erro || "Tente novamente."));
-        }
-    } catch (erro) {
-        console.error("Erro na requisição:", erro);
-        alert("Ocorreu um erro ao tentar conectar com o servidor.");
-    }
 }
+
+// 4. Função para Reiniciar Histórico e Saldo (Reset)
+async function reiniciarHistorico() {
+  const confirmacao = confirm("Tem certeza de que deseja apagar todo o histórico de descartes e zerar seus pontos?");
+  if (!confirmacao) return;
+
+  try {
+    const resposta = await fetch(`${API_URL}/reset`, { method: 'POST' });
+    const resultado = await resposta.json();
+
+    if (resposta.ok) {
+      if (mensagemEl) {
+        mensagemEl.style.color = '#2e7d32';
+        mensagemEl.innerText = resultado.mensagem;
+      }
+      // Atualiza a interface limpando o saldo e a lista
+      atualizarInterface(resultado.usuario);
+    } else {
+      alert("Erro ao reiniciar histórico: " + (resultado.erro || "Tente novamente."));
+    }
+  } catch (erro) {
+    console.error("Erro na requisição:", erro);
+    alert("Ocorreu um erro ao tentar conectar com o servidor.");
+  }
 }
 
 // Inicializa a chamada ao carregar a página
